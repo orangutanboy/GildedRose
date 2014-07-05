@@ -67,18 +67,19 @@ namespace GildedRose.Tests
             Assert.That(updated.Quality, Is.EqualTo(11));
         }
 
-        [Test]
-        public void AgedBrieWith50QualityDoesNotIncreaseQuality()
+        [TestCase("Aged Brie")]
+        [TestCase("Backstage passes to a TAFKAL80ETC concert")]
+        public void increasingQualityItemWith50QualityDoesNotIncreaseQuality(string itemName)
         {
-            var updated = UpdateQualityForItem("Aged Brie", 2, 50);
+            var updated = UpdateQualityForItem(itemName, 2, 50);
             Assert.That(updated.Quality, Is.EqualTo(50));
         }
 
         [Test]
         public void SulfurasQualityDoesNotChange()
         {
-            var updated = UpdateQualityForItem("Sulfuras, Hand of Ragnaros", 2, 15);
-            Assert.That(updated.Quality, Is.EqualTo(15));
+            var updated = UpdateQualityForItem("Sulfuras, Hand of Ragnaros", 2, 80);
+            Assert.That(updated.Quality, Is.EqualTo(80));
         }
 
         [Test]
