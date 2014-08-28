@@ -17,14 +17,6 @@ namespace GildedRose.Tests
             Assert.That(updated.SellIn, Is.EqualTo(1));
         }
 
-        private static Item UpdateQualityForItem(string itemName, int sellIn, int quality)
-        {
-            var item = new Item { Name = itemName, SellIn = sellIn, Quality = quality };
-            var items = new[] { item };
-            new Program { Items = items }.UpdateQuality();
-            return item;
-        }
-
         [TestCase("+5 Dexterity Vest")]
         [TestCase("Elixir of the Mongoose")]
         [TestCase("Conjured Mana Cake")]
@@ -53,7 +45,6 @@ namespace GildedRose.Tests
         [TestCase("+5 Dexterity Vest")]
         [TestCase("Elixir of the Mongoose")]
         [TestCase("Conjured Mana Cake")]
-        [TestCase("Sulfuras, Hand of Ragnaros")]
         public void ZeroQualityItemDoesNotReduceQuality(string itemName)
         {
             var updated = UpdateQualityForItem(itemName, 2, 0);
@@ -123,6 +114,14 @@ namespace GildedRose.Tests
         {
             var updated = UpdateQualityForItem("Backstage passes to a TAFKAL80ETC concert", 0, 15);
             Assert.That(updated.Quality, Is.EqualTo(0));
+        }
+
+        private static Item UpdateQualityForItem(string itemName, int sellIn, int quality)
+        {
+            var item = new Item { Name = itemName, SellIn = sellIn, Quality = quality };
+            var items = new[] { item };
+            new Program { Items = items }.UpdateQuality();
+            return item;
         }
     }
 }

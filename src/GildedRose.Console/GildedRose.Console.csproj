@@ -39,6 +39,11 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NamedItem.cs" />
+    <Compile Include="SulfurasItem.cs" />
+    <Compile Include="BackstagePassItem.cs" />
+    <Compile Include="AgedBrieItem.cs" />
+    <Compile Include="NamedItemFactory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
